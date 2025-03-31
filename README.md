@@ -1,22 +1,20 @@
-# project3
+# CSV reader
+This project is a basic csv reader which takes a file location and returns a custom csv type. 
 
-[![Package Version](https://img.shields.io/hexpm/v/project3)](https://hex.pm/packages/project3)
-[![Hex Docs](https://img.shields.io/badge/hex-docs-ffaff3)](https://hexdocs.pm/project3/)
+## Setup
+Adding to your current dependencies 
 
 ```sh
-gleam add project3@1
+gleam add Csv_reader
 ```
+
+## Example usage
+
 ```gleam
 import project3
 
 pub fn main() {
-  // TODO: An example of the project in use
+  csv_from_file("./filename.csv")
+  |> io.debug
 }
-```
-
-## Development
-
-```sh
-gleam run   # Run the project
-gleam test  # Run the tests
 ```

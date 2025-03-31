@@ -1,15 +1,10 @@
-import gleam/io
 import gleam/list
 import gleam/result
 import gleam/string
 import simplifile
 
-pub type Record {
-  Record(List(String))
-}
-
 pub type Csv {
-  Csv(headers: List(String), records: List(Record))
+  Csv(headers: List(String), records: List(List(String)))
 }
 
 fn return_entries(file: String) -> List(List(String)) {
@@ -47,7 +42,6 @@ fn form_csv(entries: List(List(String))) -> Csv {
   let records =
     entries
     |> list.drop(1)
-    |> list.map(fn(x) { Record(x) })
   Csv(head, records)
 }
 
@@ -55,9 +49,4 @@ pub fn csv_from_file(str: String) -> Csv {
   return_entries(str)
   |> cleanall
   |> form_csv
-}
-
-pub fn main() {
-  csv_from_file("./users.csv")
-  |> io.debug
 }
